@@ -2,6 +2,12 @@ import Image from "next/image";
 import React from "react";
 import NerrativeImage from "../../../public/assets/nerrativeimage.png";
 import background from "../../../public/assets/nerrativeBackground.png";
+import Amazon from "../../../public/assets/amazon.png";
+import Barnes from "../../../public/assets/barnes.png";
+import Bam from "../../../public/assets/bam.png";
+import Bookdepository from "../../../public/assets/bookdepository.png";
+import Insidebound from "../../../public/assets/insidebound.png";
+import Target from "../../../public/assets/target.png";
 
 export const RedefineNarrative = () => {
   const Content = () => {
@@ -40,8 +46,8 @@ export const RedefineNarrative = () => {
 
   const Images = () => {
     return (
-      <div>
-        <div style={{ position: "absolute", top: 145, right: 230 }}>
+      <div style={{ position: "relative" }}>
+        <div style={{ position: "absolute", top: 85, left: 300 }}>
           <Image
             src={NerrativeImage}
             alt="Example Image"
@@ -63,10 +69,73 @@ export const RedefineNarrative = () => {
     );
   };
 
+  const Brands = () => {
+    const Signs = ({ images }) => {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "20px",
+          }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: "white",
+                height: "100px",
+                width: "120px",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                margin: "0 5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                src={image}
+                alt={`Example Image ${index}`}
+                width={60}
+                height={50}
+                layout="fixed"
+              />
+            </div>
+          ))}
+        </div>
+      );
+    };
+
+    const images = [Amazon, Barnes, Bam, Bookdepository, Insidebound, Target];
+
+    return (
+      <>
+        <h1 className="text-blue-800 text-3xl font-extrabold pt-7">
+          Order Your Book
+        </h1>
+        <h1 className="text-cyan-950 text-3xl font-extrabold">
+          'You Are Not Your Past'
+        </h1>
+        <Signs images={images} />
+      </>
+    );
+  };
+
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <Content />
-      <Images />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        marginBottom: 50,
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Content />
+        <Images />
+      </div>
+      <Brands />
     </div>
   );
 };
